@@ -35,8 +35,7 @@ function Login() {
   };
 
   const getDocuments = async () => {
-    const list = await getDocumentList();
-    console.log(list);
+    await getDocumentList();
   };
 
   useEffect(() => {
@@ -49,10 +48,12 @@ function Login() {
   }, [loggedIn, cookies, getUserDocuments]);
 
   const handleGoogleLogout = async () => {
-    await axios.get("http://localhost:3000/logout");
+    const accessToken = axios.defaults.headers.common["Authorization"];
     removeCookies("accessToken");
-
+    const result = await axios.delete("http://localhost:3000/logout", { data: { accessToken }});
+    console.log(result);
     delete axios.defaults.headers.common["Authorization"];
+
     setLoggedIn(false);
   };
 

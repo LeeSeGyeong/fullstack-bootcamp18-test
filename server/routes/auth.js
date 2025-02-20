@@ -4,9 +4,9 @@ const axios = require("axios");
 const jwt = require('jsonwebtoken');
 
 const User = require("../models/User");
-const { makeRefreshToken, verifyToken, makeAccessToken } = require("./middlewares/authorization");
+const { makeRefreshToken, verifyToken, makeAccessToken } = require("./api/authorization");
 
-router.post("/getAuthData", (req, res, next) => {
+router.post("/getData", (req, res, next) => {
   try {
     const { refreshToken } = req.cookies;
     if (!refreshToken) {
@@ -23,7 +23,7 @@ router.post("/getAuthData", (req, res, next) => {
         httpOnly: true
       });
 
-      res.json({ user: req.cookies.user, accessToken });
+      return res.json({ user: req.cookies.user, accessToken });
     }
 
     res.status(400).json({ error: "사용자 인증 오류가 발생하였습니다" });
@@ -32,7 +32,7 @@ router.post("/getAuthData", (req, res, next) => {
   }
 });
 
-router.get("/logout", (req, res, next) => {
+router.delete("/logout", (req, res, next) => {
   try {
     req.logout((err) => {
       if (err) next(err);
@@ -41,9 +41,9 @@ router.get("/logout", (req, res, next) => {
       res.clearCookie("token");
       res.clearCookie("accessToken");
       res.clearCookie("connect.sid");
+      console.log(res.cookie);
+      return res.json({ result: "ok" });
     });
-
-    res.send("ok");
   } catch (err) {
     res.status(400).json({ error: "유효하지 않은 사용자입니다" });
   }
