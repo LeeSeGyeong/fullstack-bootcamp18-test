@@ -57,7 +57,9 @@ app.use(function(err, req, res, next) {
       result: "error",
     });
   } else {
-    res.render("error");
+    res.json({
+      result: "error",
+    });
   }
 });
 
