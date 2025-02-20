@@ -12,6 +12,7 @@ const passport = require("passport");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const documentRouter = require("./routes/document");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -45,6 +46,7 @@ app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/", authRouter);
+app.use("/", documentRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
