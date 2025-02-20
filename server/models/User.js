@@ -5,7 +5,6 @@ const userSchema = new Schema({
   id: String,
   email: String,
   nick: String,
-  token: String,
   provider: { type: String, default: "google" }
 });
 
