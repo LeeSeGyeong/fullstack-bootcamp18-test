@@ -8,7 +8,6 @@ const cors = require("cors");
 const app = express();
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const passport = require("passport");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
@@ -40,9 +39,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/", authRouter);
