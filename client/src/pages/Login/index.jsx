@@ -9,7 +9,7 @@ function Login() {
   const getUserDocuments = useStore((state) => state.getUserDocuments);
   const getDocumentList = useStore((state) => state.getDocumentList);
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = () => {
     const CLIENT_ID = process.env.REACT_APP_GOOGLE_ID;
     const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
     const SCOPE = process.env.REACT_APP_GOOGLE_SCOPE;
@@ -29,9 +29,7 @@ function Login() {
 
     const { accessToken } = response.data;
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-    if (axios.defaults.headers.common["Authorization"]) {
-      setLoggedIn(true);
-    }
+    setLoggedIn(true);
   };
 
   const getDocuments = async () => {
