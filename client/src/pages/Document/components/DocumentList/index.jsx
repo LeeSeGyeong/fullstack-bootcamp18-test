@@ -1,20 +1,18 @@
-import axios from "axios";
+import { useCookies } from "react-cookie";
 import useStore from "../../../../stores";
 import { useNavigate } from "react-router-dom";
 
 function DocumentList() {
   const navigate = useNavigate();
   const documents = useStore((state) => state.documents);
-  const accessToken = axios.defaults.headers.common.Authorization;
+  const [cookies] = useCookies(["accessToken"]);
 
   const handleDocumentClick = (docId) => {
-    if (accessToken) {
+    if (cookies.accessToken) {
       navigate(`/docs/${docId}`);
     } else {
       navigate("/err", {
-        state: {
-          errorMessage: "로그인 후 이용가능합니다",
-        }
+        state: { errorMessage: "로그인 후 이용 가능합니다." },
       });
     }
   };
