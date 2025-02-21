@@ -23,7 +23,7 @@ const useStore = create((set) => ({
   },
   addDocument: async (document) => {
     try {
-      const { data } = await axios.post("http://localhost:3000/newDoc", document);
+      const { data } = await axios.post("http://localhost:3000/newDoc", { document });
       set((state) => ({ documents: [...state.documents, { ...data }]}));
     } catch (error) {
       console.error("Failed to add tasks:", error);
