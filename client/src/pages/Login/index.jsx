@@ -48,13 +48,14 @@ function Login() {
   }, [loggedIn, cookies, getUserDocuments]);
 
   const handleGoogleLogout = async () => {
-    const accessToken = axios.defaults.headers.common["Authorization"];
     removeCookies("accessToken");
-    const result = await axios.delete("http://localhost:3000/logout", { data: { accessToken }});
-    console.log(result);
-    delete axios.defaults.headers.common["Authorization"];
-
     setLoggedIn(false);
+
+    const accessToken = axios.defaults.headers.common["Authorization"];
+    await axios.delete("http://localhost:3000/logout", {
+      data: { accessToken },
+    });
+    delete axios.defaults.headers.common["Authorization"];
   };
 
   return (

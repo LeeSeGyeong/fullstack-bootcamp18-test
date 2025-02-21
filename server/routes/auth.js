@@ -41,7 +41,6 @@ router.delete("/logout", (req, res, next) => {
       res.clearCookie("token");
       res.clearCookie("accessToken");
       res.clearCookie("connect.sid");
-      console.log(res.cookie);
       return res.json({ result: "ok" });
     });
   } catch (err) {
