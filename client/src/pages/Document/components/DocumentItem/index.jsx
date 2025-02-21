@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useStore from "../../../../stores";
 
 function DocumentItem() {
@@ -26,6 +26,14 @@ function DocumentItem() {
     updateDocument({ document: editFormData, _id: docId });
     navigate(-1);
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateDocument({ document: editFormData, _id: docId });
+    }, 20000);
+
+    return () => clearInterval(intervalId);
+  }, [editFormData, updateDocument, docId]);
 
   return (
     <div>
