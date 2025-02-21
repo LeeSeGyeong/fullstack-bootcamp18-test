@@ -38,29 +38,31 @@ function DocumentForm() {
     <section>
       <h2>문서 생성</h2>
       <form onSubmit={addNewDocument}>
-        <label htmlFor="document-input">문서 제목</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          data-test="title-input"
-          value={inputValues.title}
-          onChange={changeDocumentForm}
-          required
-        />
-        <label htmlFor="content-input">내용</label>
-        <input
-          type="text"
-          id="content-input"
-          name="tempContent"
-          data-test="content-input"
-          value={inputValues.tempContent}
-          onChange={changeDocumentForm}
-          required
-        />
-        <button type="submit" data-test="document-add-button">
-          문서 생성
-        </button>
+        <fieldset>
+          <legend>문서 정보 입력</legend>
+          <label htmlFor="title-input">문서 제목</label>
+          <input
+            type="text"
+            id="title-input"
+            name="title"
+            data-test="title-input"
+            value={inputValues.title}
+            onChange={changeDocumentForm}
+            required
+          />
+          <label htmlFor="content-input">내용</label>
+          <textarea
+            id="content-input"
+            name="tempContent"
+            data-test="content-input"
+            value={inputValues.tempContent}
+            onChange={changeDocumentForm}
+            required
+          />
+          <button type="submit" data-test="document-add-button">
+            문서 생성
+          </button>
+        </fieldset>
       </form>
     </section>
   );
