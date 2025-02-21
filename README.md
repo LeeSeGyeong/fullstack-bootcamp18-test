@@ -1,7 +1,9 @@
 # **📑 Google Dogs**
+<br>
 
 > **Google Dogs**는 MERN(MongoDB, Express, React, Node.js) 스택과 **Socket.IO**를 사용하여 구축된 **문서 협업 애플리케이션**입니다.
 > 실시간으로 여러 사용자가 협업할 수 있도록 설계되었습니다.
+<br>
 
 ## Getting Started / Installation
 
@@ -57,11 +59,15 @@ npm start
 
 브라우저에서 `http://localhost:3000`를 입력하면 접속 가능합니다
 
+<br />
+
 ## **Developing**
 
 ```sh
 npm run build
 ```
+
+<br />
 
 ## **Features**
 
@@ -85,6 +91,8 @@ npm run build
 * MongoDB를 활용한 문서 자동 저장 기능
 * 20초마다 자동 저장
 
+<br />
+
 ## Configuration
 
 설정 값: 설명
@@ -99,6 +107,8 @@ npm run build
 
 - `REACT_APP_REDIRECT_URI`: OAuth 인증 후 리디렉트될 URL
 
+<br />
+
 ## Usage
 브라우저에서 페이지를 엽니다.
 
@@ -111,15 +121,17 @@ npm run build
 3. 문서 작업:
 텍스트 기반 문서를 작성하고 내용 저장 가능
 
+<br />
+
 ## **구현 사항**
 
-### **핵심 기능**
+### **1. 핵심 기능**
 
 * JWT 인증을 활용한 로그인 구현
 * Zustand를 사용한 상태 관리
 * MongoDB를 이용한 데이터 저장
 
-### **페이지별 기능**
+### **2. 페이지별 기능**
 
 #### **로그인 페이지 (`/login`)**
 
@@ -142,6 +154,8 @@ npm run build
 * 기본적인 텍스트 입력 가능
 * 작업 문서 저장 기능 지원
 * 이전 저장된 문서 불러오기 지원
+
+<br />
 
 ## Support Link
 질문이나 다른 문의는 [Reports](https://github.com/LeeSeGyeong/fullstack-bootcamp18-test/issues) 링크를 사용해 주세요.
