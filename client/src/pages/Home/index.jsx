@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Login from "../Login";
 import DocumentList from "../Document/components/DocumentList";
+import { useCookies } from "react-cookie";
 
 function Main() {
   const navigate = useNavigate();
-  const accessToken = axios.defaults.headers.common.Authorization;
+  const [cookies] = useCookies(["accessToken"]);
 
   const onCreateDocument = async () => {
-    if (accessToken) {
+    if (cookies.accessToken) {
       navigate("/newDoc");
     } else {
       navigate("/err", {
